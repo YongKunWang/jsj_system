@@ -3,7 +3,6 @@ package com.jsj.servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -76,7 +75,7 @@ public class UserServlet extends HttpServlet {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String realname = request.getParameter("realname");
-			boolean sex = Boolean.getBoolean(request.getParameter("sex"));// 将前端获取到的字符转化成boolean类型
+			boolean sex = Boolean.parseBoolean(request.getParameter("sex"));// 将前端获取到的字符转化成boolean类型
 			String address = request.getParameter("address");
 
 			IUserDAO userDao = new UserDAOImpl();
@@ -103,10 +102,7 @@ public class UserServlet extends HttpServlet {
 		} else if ("search".equals(operation)) {
 			String username = request.getParameter("username");
 			IUserDAO userDao = new UserDAOImpl();
-			User user = userDao.findUser(username);
-			// 获取用户列表
-			List<User> userList = new ArrayList<User>();
-			userList.add(user);
+			List<User> userList = userDao.findUser(username);
 			// 将用户列表写入session里面
 			request.getSession().setAttribute("userList", userList);
 			// 重定向到index.jsp页面：地址栏上的地址变为/index.jsp，弄清楚重定向和转发的区别

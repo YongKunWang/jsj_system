@@ -18,7 +18,7 @@ public class GetEditUserServlet extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("请求参数" + request.getQueryString());
+		// System.out.println("请求参数" + request.getQueryString());
 		String id = request.getParameter("edit_id");
 		long edit_id = Long.parseLong(id);
 		System.out.println("edit_id==" + edit_id);

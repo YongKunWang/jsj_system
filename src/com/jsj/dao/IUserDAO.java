@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.jsj.pojo.User;
 
+//接口命名一般首字母要加上大写I代表这是一个接口类
 public interface IUserDAO {
 	// 增加
 	public void add(User user);
@@ -14,10 +15,10 @@ public interface IUserDAO {
 	// 删除
 	public boolean delete(long id);
 
-	// 获取
+	// 根据id获取用户
 	public User get(long id);
 
-	// 查询
+	// 获取用户列表
 	public List<User> list();
 
 	// 获取用户数量
@@ -27,6 +28,6 @@ public interface IUserDAO {
 	public User login(String username, String password);
 
 	// 通过用户名查找用户
-	User findUser(String username);
+	List<User> findUser(String username);
 
 }
